@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fredoka:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Netflix Dark + Early 2000s Cartoon Colors */
+    --background: 228 14% 5%;
+    --foreground: 0 0% 100%;
+
+    /* Smooth dark slate cards */
+    --card: 228 17% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 228 17% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Warm gradient accent - coral to orange */
+    --primary: 355 100% 64%;
+    --primary-foreground: 228 14% 5%;
+
+    /* Warm yellow highlight */
+    --secondary: 48 100% 62%;
+    --secondary-foreground: 228 14% 5%;
+
+    /* Muted backgrounds */
+    --muted: 228 17% 10%;
+    --muted-foreground: 0 0% 55%;
+
+    /* Warm yellow accent */
+    --accent: 48 100% 62%;
+    --accent-foreground: 228 14% 5%;
+
+    /* Success */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Destructive */
+    --destructive: 355 100% 64%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Subtle borders */
+    --border: 0 0% 100% / 0.06;
+    --input: 228 17% 7%;
+    --ring: 48 100% 62%;
+
+    /* Rounded corners */
+    --radius: 0.5rem;
+
+    --sidebar-background: 228 14% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 355 100% 64%;
+    --sidebar-primary-foreground: 228 14% 5%;
+    --sidebar-accent: 228 17% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100% / 0.06;
+    --sidebar-ring: 48 100% 62%;
+
+    /* Clean gradients */
+    --gradient-hero: linear-gradient(to bottom right, hsl(228 14% 5%) 20%, hsl(228 17% 10%) 80%);
+    --gradient-accent: linear-gradient(135deg, #FF455E 0%, #FFB84C 100%);
+    --gradient-button: linear-gradient(135deg, #FF455E, #FFB84C);
+    
+    /* Warm glow shadows */
+    --shadow-card: 0 4px 20px hsla(0 0% 0% / 0.5);
+    --shadow-hover: 0 6px 22px hsla(0 0% 0% / 0.4), 0 0 10px hsla(38 100% 65% / 0.15);
+    --shadow-warm: 0 0 14px hsla(38 100% 65% / 0.4);
+    --shadow-navbar: 0 2px 16px hsla(38 100% 65% / 0.08);
+    
+    /* Transitions */
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    /* Same as root - already dark */
+    --background: 228 14% 5%;
+    --foreground: 0 0% 100%;
+
+    --card: 228 17% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 228 17% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 355 100% 64%;
+    --primary-foreground: 228 14% 5%;
+
+    --secondary: 48 100% 62%;
+    --secondary-foreground: 228 14% 5%;
+
+    --muted: 228 17% 10%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 48 100% 62%;
+    --accent-foreground: 228 14% 5%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 355 100% 64%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.06;
+    --input: 228 17% 7%;
+    --ring: 48 100% 62%;
+    
+    --sidebar-background: 228 14% 5%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 355 100% 64%;
+    --sidebar-primary-foreground: 228 14% 5%;
+    --sidebar-accent: 228 17% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 100% / 0.06;
+    --sidebar-ring: 48 100% 62%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    position: relative;
+  }
+
+  /* Retro grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fredoka', 'Poppins', sans-serif;
+    font-weight: 700;
+  }
+
+  /* Warm glow effects */
+  .warm-glow {
+    box-shadow: 0 0 14px hsla(38 100% 65% / 0.4);
+  }
+
+  .warm-glow-subtle {
+    box-shadow: 0 0 10px hsla(38 100% 65% / 0.15);
+  }
+
+  /* Clean glassmorphism */
+  .glass {
+    background: rgba(17, 18, 26, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  /* Premium card hover */
+  .card-premium {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 180, 70, 0.15);
+  }
+
+  /* Channel slider animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+  }
+
+  .pause-animation:hover {
+    animation-play-state: paused;
+  }
+}
